@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pesquisa no DOE</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("https://i.pinimg.com/originals/72/fd/9b/72fd9bcc9e47ea91e5b355499f330379.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        #content {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <h2>Pesquisa de Informações</h2>
+        <input type="text" id="searchInput" placeholder="Digite o nome ou inscrição" onkeydown="if (event.keyCode === 13) searchText()">
+        <button onclick="searchText()">Procurar</button>
+        <div class="result" id="toxicologicoResult"></div>
+        <div class="result" id="analiseDocumentosResult"></div>
+        <div class="result" id="investigacaoSocialResult"></div>
+    </div>
+
+    <script>
+        function searchText() {
+            var toxicologico = `TAF BOMBEIRO - PARTE I
+            NATAÇÃO
+            Objetivo: percorrer 50m (ida 25m + volta 25m). Homens: 1m15s , Mulheres: 1m30s
+            * Não pode pisar no chão ou apoiar nas raias; pode utilizar bordas p/ pegar impulso.
+            CORDA
+            Objetivo: escalar cabo vertical, sem auxílio dos membros inferiores(pernas).
+            ABDOMINAL
+            Objetivo: Efetuar o máximo de repetições do abdominal remador em 60s.
+            CORRIDA
+            Objetivo: correr o máximo que conseguir em 12 minutos.`.toLowerCase();
+
+            var analiseDocumentos = `PARTE II
+            TESTES DE FOBIA
+            Objetivo: Não há contagem de tempo, precisa apenas completar o teste comprovando que não sofre de:
+            PORTICO - ACROFOBIA (medo de altura) – altura de +/- 18 metros
+            GALERA ou CASA DA FUMAÇA - CLAUSTROFOBIA (medo de espaços fechados/confinados/com fumaça)
+            BOMBEIRO RESISTENTE
+            Objetivo 1: Usando o uniforme de TFM, colocará a capa e a calça de incêndio, um capacete do BM e um colete de 10Kg. Correr 400m com uma mangueira enrolada de +/- 5Kg, Carga total:+/-15Kg.
+            Objeto 2: Levantar uma barra com anilhas de +/- 60 quilos e caminhar de costas por uma distância de 30m. (levantamento terra, braços esticados, sem flexionar os cotovelos e sem passar da cintura)
+            * Essas duas etapas devem ser realizadas em até 4 minutos.`.toLowerCase();
+
+            var investigacaoSocial = `Não será eliminado do concurso da PM, caso reprove no TAF do bombeiro. Ele ocorre antes da escolha das vagas de onde fará o curso.`.toLowerCase();
+
+            var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            var textArray = [toxicologico, analiseDocumentos, investigacaoSocial];
+            var searchResults = [];
+
+            textArray.forEach(function (text, index) {
+                if (text.includes(searchTerm)) {
+                    searchResults.push('APTO');
+                } else {
+                    searchResults.push('INAPTO');
+                }
+            });
+
+            document.getElementById('toxicologicoResult').innerHTML = 'Toxicológico: <span class="' + (searchResults[0] === 'APTO' ? 'green' : 'red') + '">' + searchResults[0] + '</span>';
+            document.getElementById('analiseDocumentosResult').innerHTML = 'Análise de Documentos: <span class="' + (searchResults[1] === 'APTO' ? 'green' : 'red') + '">' + searchResults[1] + '</span>';
+            document.getElementById('investigacaoSocialResult').innerHTML = 'Investigação Social: <span class="' + (searchResults[2] === 'APTO' ? 'green' : 'red') + '">' + searchResults[2] + '</span>';
+        }
+    </script>
+</body>
+
+</html>
