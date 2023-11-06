@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-image: url('https://i.pinimg.com/originals/3d/19/f7/3d19f70f4f66939aa1191eb86f1666da.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+            animation: blinker 3s linear infinite;
+        }
+
+        .info-container {
+            border: 2px solid black;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .progress {
+            width: 50%;
+            background-color: rgba(211, 211, 211, 0.7);
+            border: 1px solid black;
+            height: 30px;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 100%;
+            background-color: green;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #3498db;
+        }
+
+        .button.resultado {
+            padding: 20px 40px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            animation: blinking-text 1s linear infinite;
+            font-size: 30px;
+        }
+
+        .button.resultado:hover {
+            background-color: #3498db;
+        }
+
+        .note-container {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .note {
+            color: rgb(170, 20, 20);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            animation: blinker 3s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes blinking-text {
+            0% { color: red; }
+            49% { color: red; }
+            50% { color: transparent; }
+            100% { color: transparent; }
+        }
+
+        .credit {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: white;
+        }
+
+        #schedule-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .search-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #3498db;
+        }
+    </style>
+    <script>
+        function updateCountdown() {
+            var targetDate = new Date('2023-11-17T05:15:00');
+            var currentDate = new Date();
+            var timeDifference = targetDate - currentDate;
+
+            var seconds = Math.floor(timeDifference / 1000) % 60;
+            var minutes = Math.floor(timeDifference / 1000 / 60) % 60;
+            var hours = Math.floor(timeDifference / 1000 / 60 / 60) % 24;
+            var days = Math.floor(timeDifference / 1000 / 60 / 60 / 24);
+
+            document.getElementById('currentDate').innerHTML = 'Data Atual: ' + currentDate.toLocaleString();
+            document.getElementById('targetDate').innerHTML = 'Data Final: ' + targetDate.toLocaleString();
+            document.getElementById('countdown').innerHTML = 'Tempo restante: ' + days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+
+            var startDate = new Date('2023-09-14T14:00:00');
+            var totalTime = targetDate - startDate;
+            var elapsedTime = currentDate - startDate;
+            var progressPercentage = (elapsedTime / totalTime) * 100;
+            document.getElementById('progress-bar').style.width = progressPercentage + '%';
+            document.getElementById('progress-bar').innerHTML = progressPercentage.toFixed(2) + '%';
+        }
+
+        function showPossibleSchedule() {
+            window.open('https://i.pinimg.com/originals/0b/3e/19/0b3e1927b140b795d903161f65c926e8.png', '_blank');
+        }
+
+        function openDocumentation() {
+            window.open('https://www.concursos.policiamilitar.sp.gov.br/servicos-ao-candidato/#tab-66c3e229421daeb3feb', '_blank');
+        }
+
+        function openPesquisaPage() {
+            window.open('pesquisa.html', '_blank');
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</head>
+
+<body>
+    <h2>Resultado da Investigação Social</h2>
+    <div class="button-container">
+        <button class="button resultado" onclick="window.location.href='https://www.imprensaoficial.com.br/downloads/pdf/edicao/20231101EXEC1.pdf'">Resultado</button>
+    </div>
+    <p></p>
+    <div class="info-container">
+        <p id="currentDate"></p>
+        <p id="targetDate"></p>
+        <p id="countdown"></p>
+    </div>
+
+    <div class="progress">
+        <div id="progress-bar" class="progress-bar"></div>
+    </div>
+
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='https://www.doe.sp.gov.br/sumario'">DOE SP</button>
+        <button class="button" onclick="showPossibleSchedule()">Possível Cronograma</button>
+        <button class="button" onclick="openDocumentation()">Documentação Posse</button>
+        <button class="button" onclick="window.open('https://drive.google.com/drive/folders/1ISaySirG684FYQ4hTU4idGE3zmSjjW8t?usp=sharing', '_blank')">Arquivos</button>
+    </div>
+    <div class="note-container">
+        <p class="note">Lembrem-se, o seu nome tem que aparecer três vezes no DOE!</p>
+    </div>
+
+    <div id="schedule-container"></div>
+
+    <div class="credit">Desenvolvido por: Dohm Gentile.</div>
+
+    <button class="search-button" onclick="openPesquisaPage()">Pesquisa</button>
+</body>
+
+</html>
