@@ -6,9 +6,8 @@
     <style>
         body {
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
             margin: 0;
             background-image: url("https://i.pinimg.com/originals/72/fd/9b/72fd9bcc9e47ea91e5b355499f330379.jpg");
@@ -17,6 +16,7 @@
         }
 
         #content {
+            text-align: center;
             background: rgba(255, 255, 255, 0.7);
             padding: 20px;
             border-radius: 10px;
@@ -34,12 +34,21 @@
         .red {
             color: red;
         }
+
+        .additional-info {
+            text-align: center;
+            font-style: italic;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div id="content">
-        <h2>Pesquisa de Informações</h2>
+        <h2>Pesquisa no DOE</h2>
+        <p class="additional-info">Obs.: O resultado sai somente dia 17/11!</p>
+        <p class="additional-info">NÃO ADIANTA PESQUISAR ANTES DA DATA!</p>
         <input type="text" id="searchInput" placeholder="Digite o nome ou inscrição" onkeydown="if (event.keyCode === 13) searchText()">
         <button onclick="searchText()">Procurar</button>
         <div class="result" id="toxicologicoResult"></div>
